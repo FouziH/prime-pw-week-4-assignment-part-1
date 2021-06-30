@@ -102,11 +102,18 @@ console.log( 'isFirstLetter - should say true', isFirstLetter('a', 'apple') );
 console.log( 'isFirstLetter - should say false', isFirstLetter('z', 'apple') );
 
 // 9. Function to return the sum of all numbers in an array
-function sumAll( ) {
-  let sum = 0
-  // TODO: loop to add items
+function sumAll( array) {
+  let sum = 0;
+  for ( let i =0; i < array.length; i++ ){
+    // TODO: loop to add items
+    sum += array[i];
+  }// end of for loop
   return sum;
-}
+}//end of sumAll
+
+let sumArray = [1, 2, 3, 5, 10];
+
+console.log ( sumAll ( sumArray ) );
 
 // 10. Function to return a new array of all positive (greater than zero)
 //     numbers contained in an input array. If there are no positive numbers
@@ -117,3 +124,31 @@ function sumAll( ) {
 // 11. Pick a problem from Edabit(https://edabit.com/) or
 //     CodeWars(https://www.codewars.com/). Then describe it
 //     here in a comment, write the function, and test it!
+
+//Write a function that accepts an array of 10 integers (between 0 and 9),
+//that returns a string of those numbers in the form of a phone number.
+//Example
+//createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // => returns "(123) 456-7890"
+
+//solution 1
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+
+function createPhoneNumber(numbers){
+  numbers = numbers.join('');
+  return '(' + numbers.substring(0,3) + ')' + numbers.substring(3, 6) + '-' + numbers.substring(6);
+}
+//Solution 2
+function createPhoneNumbers(numbers){
+  let phoneNumber = "(xxx) xxx-xxxx";
+
+  for ( let i = 0; i < numbers.length; i++ ){
+    phoneNumber = phoneNumber.replace("x", numbers[i])
+    }
+      return phoneNumber;
+  }
+
+//output from createPhoneNumber fucntion (solution 1);
+console.log(createPhoneNumber(numbers));
+
+//output from createPhoneNumbers function (solution 2)
+console.log(createPhoneNumbers(numbers))
