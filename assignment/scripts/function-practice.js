@@ -111,7 +111,7 @@ function sumAll( array) {
   return sum;
 }//end of sumAll
 
-let sumArray = [1, 2, 3, 5, 10];
+let sumArray = [ -5, -8, 0, -8, -1 ];
 
 console.log ( sumAll ( sumArray ) );
 
@@ -119,7 +119,18 @@ console.log ( sumAll ( sumArray ) );
 //     numbers contained in an input array. If there are no positive numbers
 //     return an empty array. Note: The input array should not change.
 
+//This function will take an array as a parameter
+//within the function posarr is declared
+//it will filter throug the array and check if any index within the array is greater than zero,
+//if there are postive numbers within the array, it will return a new array
+//if thhe indexes within the array is less than 1, it will retun an empty array
+function positiveArray (array){
+  let posArr = array.filter( index => index > 0 );
+  return posArr;
+}
 
+//login and testing if the function return postive array or empty based on the sumArrayarray input
+console.log(positiveArray( sumArray )); // output is []
 
 // 11. Pick a problem from Edabit(https://edabit.com/) or
 //     CodeWars(https://www.codewars.com/). Then describe it
@@ -135,7 +146,7 @@ let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
 function createPhoneNumber(numbers){
   numbers = numbers.join('');
-  return '(' + numbers.substring(0,3) + ')' + numbers.substring(3, 6) + '-' + numbers.substring(6);
+  return '(' + numbers.substring(0,3) + ') ' + numbers.substring(3, 6) + '-' + numbers.substring(6);
 }
 //Solution 2
 function createPhoneNumbers(numbers){
