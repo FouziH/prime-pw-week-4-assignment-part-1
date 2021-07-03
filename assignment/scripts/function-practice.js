@@ -1,4 +1,4 @@
-console.log('***** Function Practice *****')
+console.log('***** Function Practice *****');
 
 // Add the required code to complete the functions below
 // After _each_ function, use a console log to call the function
@@ -10,80 +10,99 @@ function hello() {
 }
 // Call the function to test
 console.log('Test - should say "Hello World!"', hello());
-console.log(hello())
+
 
 // 2. Function to return an personalized hello, using the `name` argument.
 //    for example 'Hello, Jo!', or 'Hello, Stacy!'
 function helloName( name ) {
-  return `Hello, ${name}!` ;
+
+//returning a template literal that says Hello, name!
+  return `Hello, ${name}!`;
 }
 // Remember to call the function to test
-console.log(helloName("Stacy"))
+
+//assigning greetName to helloName ("Jo")
+const greetName = helloName("Jo");
+
+//loging greetName to console
+console.log(greetName); // output should be "Hello, Jo!"
+
 
 // 3. Function to add two numbers together & return the result
-function addNumbers( firstNumber, secondNumber) {
-  // return firstNumber + secondNumber;
-  let result = firstNumber + secondNumber;
+//added a second paramter to the function called secondNumber
+function addNumbers( firstNumber,  secondNumber  ) {
+ //created a varaible called total and set it equal to first parmater  plus the second paramter
+  let total = firstNumber + secondNumber;
+  //returning total
+  return total;
 
-  return result;
 }
+//declared total variable and set equal to addNumbers and passed 5 and 4 as an argument
+const total = addNumbers(5, 4);
 
-console.log(addNumbers(3, 7));
+//login total to console
+console.log(total); //output should 9
 
 // 4. Function to multiply three numbers & return the result
-function multiplyThree( ){
-let result = 2 * 5 * 6;
+//This function will take 3 parameters
+function multiplyThree( num1, num2, num3){
+// Declared result and set it equal num1 multplied by num2 multiplied by num3
+let result = num1 * num2 * num3;
 
+//returning/shipping result
 return result;
 }
 
-console.log(multiplyThree())
-
+//loging multiplyThree function to console and passing three argument in the form of numbers
+console.log(multiplyThree(4,6, 8)); //output 192
 
 // 5. Function that will return true if a number is positive,
 //    or greater than zero, and false otherwise
 function isPositive( number ) {
-  if ( number > 0 ){
-    return true;
-  }
-    return false;
+   if ( number > 0 ) {
+     return true;
+   }
+   return false;
 }
-
-console.log(isPositive(5))
 // Call the function to test each outcome (true & false)
 // Write a separate console.log statement for each outcome
-console.log( 'isPositive - should say true', isPositive(3) );
+console.log( 'isPositive - should say true', isPositive(0) );
 console.log( 'isPositive - should say false', isPositive(0) );
 console.log( 'isPositive - should say false', isPositive(-3) );
 
 
 // 6. Function to return the _last_ item in an array. If the
 //    array is empty, return `undefined`.
-let array = []
 function getLast( array ) {
- if ( array && array.length > 0 ){
-   return array[ array.length -1 ]
- }// end
- else {
-   return undefined;
- }// end
-}  // end getLast
 
-//loging the getLast function and passing the empty array I created above
-console.log(getLast(array))
+//Using for loop that would loop through the
+  for(let i = 0; i < array.length; i++){
+    //returning
+    return array[array.length -1];
+  }
+  return array;
+
+}
+
+let array = ["Ice cream", "cheese cake", "smoothie vegan shake"];
+
+console.log("The last item  of the array is:", getLast(array));
+
 // 7. Function to find a value in an array. Return true if the
 //    value is found and false otherwise. Use a loop;
 //    DO NOT use Array.includes, Array.indexOf, or Array.find
 function find( value, array ){
 
-  for ( let i =0; i < array.length; i++ ){
+  for ( let i = 0; i < array.length; i++ ){
+    if ( value  === array[i] ) {
 
-    if(value === array[i]){
       return true;
     }
   }
     return false;
 }
+let value;
+console.log(find(value, array));
 
 // ----------------------
 // Stretch Goals
@@ -119,11 +138,6 @@ console.log ( sumAll ( sumArray ) );
 //     numbers contained in an input array. If there are no positive numbers
 //     return an empty array. Note: The input array should not change.
 
-//This function will take an array as a parameter
-//within the function posarr is declared
-//it will filter throug the array and check if any index within the array is greater than zero,
-//if there are postive numbers within the array, it will return a new array
-//if thhe indexes within the array is less than 1, it will retun an empty array
 function positiveArray (array){
   let posArr = array.filter( index => index > 0 );
   return posArr;
@@ -146,14 +160,14 @@ let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
 function createPhoneNumber(numbers){
   numbers = numbers.join('');
-  return '(' + numbers.substring(0,3) + ') ' + numbers.substring(3, 6) + '-' + numbers.substring(6);
+  return `(${numbers.substring(0,3)}) ${numbers.substring(3, 6)}-${numbers.substring(6)}`;
 }
 //Solution 2
 function createPhoneNumbers(numbers){
   let phoneNumber = "(xxx) xxx-xxxx";
 
   for ( let i = 0; i < numbers.length; i++ ){
-    phoneNumber = phoneNumber.replace("x", numbers[i])
+    phoneNumber = phoneNumber.replace("x", numbers[i]);
     }
       return phoneNumber;
   }
@@ -162,4 +176,4 @@ function createPhoneNumbers(numbers){
 console.log(createPhoneNumber(numbers));
 
 //output from createPhoneNumbers function (solution 2)
-console.log(createPhoneNumbers(numbers))
+console.log(createPhoneNumbers(numbers));
