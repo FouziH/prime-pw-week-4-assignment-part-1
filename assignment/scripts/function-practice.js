@@ -150,30 +150,44 @@ console.log(positiveArray( sumArray )); // output is []
 //     CodeWars(https://www.codewars.com/). Then describe it
 //     here in a comment, write the function, and test it!
 
-//Write a function that accepts an array of 10 integers (between 0 and 9),
-//that returns a string of those numbers in the form of a phone number.
-//Example
-//createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // => returns "(123) 456-7890"
+//Question from codewars
 
-//solution 1
-let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+// Number of people in the bus
+// There is a bus moving in the city, and it takes and drop some people in each bus stop.
+//
+// You are provided with a list (or array) of integer arrays (or tuples). Each integer array has two items which represent number of people get into bus (The first item) and number of people get off the bus (The second item) in a bus stop.
+//
+// Your task is to return number of people who are still in the bus after the last bus station (after the last array). Even though it is the last bus stop, the bus is not empty and some people are still in the bus, and they are probably sleeping there :D
+//
+// Take a look on the test cases.
+//
+// Please keep in mind that the test cases ensure that the number of people in the bus is always >= 0. So the return integer can't be negative.
+//
+// The second value in the first integer array is 0, since the bus is empty in the first bus stop.
 
-function createPhoneNumber(numbers){
-  numbers = numbers.join('');
-  return `(${numbers.substring(0,3)}) ${numbers.substring(3, 6)}-${numbers.substring(6)}`;
-}
-//Solution 2
-function createPhoneNumbers(numbers){
-  let phoneNumber = "(xxx) xxx-xxxx";
+const numbers = function(busStops){
+let currentPplOnTheBus = 0;
+  for ( let i = 0; i < busStops.length; i++ ) {
+    let currentStop = busStops[i];
+    let gotOn = currentStop[0]
+    let gotOff = currentStop[1];
 
-  for ( let i = 0; i < numbers.length; i++ ){
-    phoneNumber = phoneNumber.replace("x", numbers[i]);
-    }
-      return phoneNumber;
+    currentPplOnTheBus += gotOn;
+    currentPplOnTheBus -= gotOff;
   }
 
-//output from createPhoneNumber fucntion (solution 1);
-console.log(createPhoneNumber(numbers));
+  return currentPplOnTheBus;
+};
 
-//output from createPhoneNumbers function (solution 2)
-console.log(createPhoneNumbers(numbers));
+// Testing the above function to see if its working
+let number = [[10,0],[3,5],[5,8]];
+
+console.log(numbers(number));
+
+number = [[3,0],[9,1],[4,10],[12,2],[6,1],[7,10]];
+
+console.log(numbers(number));
+
+number = [[3,0],[9,1],[4,8],[12,2],[6,1],[7,8]];
+
+console.log(numbers(number));
